@@ -1,0 +1,48 @@
+GET http://localhost:9002/padron/listar HTTP/1.1
+
+###
+
+POST http://localhost:9002/padron/crear HTTP/1.1
+content-type: application/json
+
+    {
+      "primerNombre": "PADRON PRUEBA",
+      "segundoNombre": "ESTUARDO",
+      "primerApellido": "GONZALES",
+      "segundoApellido": "PEREZ",
+      "apellidoCasada": null,
+      "cui": "0000000000000000",
+      "dirDepartamento": 1,
+      "dirMunicipio": 1,
+      "direccion": "3ERA VENIDA 5-33 ZONA 1",
+      "zona": 10,
+      "comunidad": "ALDEA EL PANTEON"
+    }
+
+###
+
+GET http://localhost:9002/padron/ver/1 HTTP/1.1
+content-type: application/json
+
+###
+
+PUT http://localhost:9002/padron/editar/7 HTTP/1.1
+content-type: application/json
+
+    {
+      "primerNombre": "PADRON EDITADO",
+      "segundoNombre": "ESTUARDO",
+      "primerApellido": "GONZALES",
+      "segundoApellido": "PEREZ",
+      "apellidoCasada": null,
+      "cui": "1111111111111111",
+      "dirDepartamento": 1,
+      "dirMunicipio": 1,
+      "direccion": "3ERA VENIDA 5-33 ZONA 1",
+      "zona": 10,
+      "comunidad": "ALDEA EL PANTEON"
+    }
+
+###
+
+DELETE http://localhost:9002/padron/borrar/3 HTTP/1.1

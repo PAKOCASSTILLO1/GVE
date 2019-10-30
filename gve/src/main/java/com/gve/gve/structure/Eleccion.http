@@ -1,0 +1,34 @@
+GET http://localhost:9002/eleccion/listar HTTP/1.1
+
+###
+
+POST http://localhost:9002/eleccion/crear HTTP/1.1
+content-type: application/json
+
+{
+    "fechaEleccion": "2019-10-29",
+    "objetoElección": "MESA ELECTORAL",
+    "fechaSegundaVuelta": null,
+    "numeroDecreto": "002395"
+}
+
+###
+
+GET http://localhost:9002/eleccion/ver/1 HTTP/1.1
+content-type: application/json
+
+###
+
+PUT http://localhost:9002/eleccion/editar/3 HTTP/1.1
+content-type: application/json
+
+{
+    "fechaEleccion": "2019-10-29",
+    "objetoElección": "MESA EDITADA",
+    "fechaSegundaVuelta": null,
+    "numeroDecreto": "001111"
+}
+
+###
+
+DELETE http://localhost:9002/eleccion/borrar/3 HTTP/1.1

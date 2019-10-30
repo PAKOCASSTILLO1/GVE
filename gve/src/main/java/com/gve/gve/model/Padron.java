@@ -1,15 +1,19 @@
 package com.gve.gve.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.Date;
 
 @Entity
 public class Padron {
 
     @Id
     @Column(name = "cod_padron")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int cod_padron;
 
     @Column(name = "primer_nombre")
@@ -44,13 +48,28 @@ public class Padron {
     // private Object ubicacionGeografica;
 
     @Column(name = "fecha_creo")
-    private Date fechaCreo;
+    private Date fechaCreo = new Date();
 
     @Column(name = "fecha_modifico")
     private Date fechaModifico;
 
-    private byte estado;
+    private byte estado = 1;
 
+    public Padron modified(Padron body) {
+        this.primerNombre = body.getPrimerNombre();
+        this.segundoNombre = body.getSegundoNombre();
+        this.primerApellido = body.getPrimerApellido();
+        this.segundoApellido = body.getSegundoApellido();
+        this.apellidoCasada = body.getApellidoCasada();
+        this.cui = body.getCui();
+        this.dirDepartamento = body.getDirDepartamento();
+        this.dirMunicipio = body.getDirMunicipio();
+        this.direccion = body.getDireccion();
+        this.zona = body.getZona();
+        this.comunidad = body.getComunidad();
+        this.fechaModifico = new Date();
+        return this;
+    }
 
     public Padron() {
     }

@@ -1,0 +1,34 @@
+GET http://localhost:9002/centroVotacion/listar HTTP/1.1
+
+###
+
+POST http://localhost:9002/centroVotacion/crear HTTP/1.1
+content-type: application/json
+
+{
+    "nombre": "CENTRO PRUEBA",
+    "direccion": "9 CALLE ZONA 1",
+    "telefono": "34545676",
+    "distrito": 1
+}
+
+###
+
+GET http://localhost:9002/centroVotacion/ver/7 HTTP/1.1
+content-type: application/json
+
+###
+
+PUT http://localhost:9002/centroVotacion/editar/7 HTTP/1.1
+content-type: application/json
+
+{
+    "nombre": "CENTRO PRUEBA EDITAR",
+    "direccion": "9 CALLE ZONA 10",
+    "telefono": "34545610",
+    "distrito": 2
+}
+
+###
+
+DELETE http://localhost:9002/centroVotacion/borrar/7 HTTP/1.1

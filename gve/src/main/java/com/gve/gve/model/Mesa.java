@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -13,31 +15,42 @@ public class Mesa {
 
     @Id
     @Column(name = "cod_mesa")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int cod_mesa;
 
     private int numero;
 
+    private int centroVotacion;
+
     // FOREIGN KEY
     @ManyToOne
-    @JoinColumn(name = "FK_COD_CENTRO_V_MESA", nullable = false, updatable = false)
+    @JoinColumn(name = "cod_centro_votacion", nullable = false, updatable = false)
     private CentroVotacion cod_centro_votacion;
     
 
     @Column(name = "fecha_creo")
-    private Date fechaCreo;
+    private Date fechaCreo = new Date();
 
     @Column(name = "fecha_modifico")
     private Date fechaModifico;
 
     private byte estado;
 
+    public Mesa modified(Mesa body, CentroVotacion centroVotacion) {
+        this.centroVotacion = centroVotacion.getCod_centro_votacion();
+        this.numero = body.getNumero();
+        this.cod_centro_votacion = centroVotacion;
+        this.fechaModifico = new Date();
+        return this;
+    }
 
     public Mesa() {
     }
 
-    public Mesa(int cod_mesa, int numero, CentroVotacion cod_centro_votacion, Date fechaCreo, Date fechaModifico, byte estado) {
+    public Mesa(int cod_mesa, int numero, int centroVotacion, CentroVotacion cod_centro_votacion, Date fechaCreo, Date fechaModifico, byte estado) {
         this.cod_mesa = cod_mesa;
         this.numero = numero;
+        this.centroVotacion = centroVotacion;
         this.cod_centro_votacion = cod_centro_votacion;
         this.fechaCreo = fechaCreo;
         this.fechaModifico = fechaModifico;
@@ -58,6 +71,14 @@ public class Mesa {
 
     public void setNumero(int numero) {
         this.numero = numero;
+    }
+
+    public int getCentroVotacion() {
+        return this.centroVotacion;
+    }
+
+    public void setCentroVotacion(int centroVotacion) {
+        this.centroVotacion = centroVotacion;
     }
 
     public CentroVotacion getCod_centro_votacion() {
@@ -99,6 +120,11 @@ public class Mesa {
 
     public Mesa numero(int numero) {
         this.numero = numero;
+        return this;
+    }
+
+    public Mesa centroVotacion(int centroVotacion) {
+        this.centroVotacion = centroVotacion;
         return this;
     }
 

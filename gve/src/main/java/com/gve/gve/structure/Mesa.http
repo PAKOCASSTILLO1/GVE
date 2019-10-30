@@ -1,0 +1,30 @@
+GET http://localhost:9002/mesa/listar HTTP/1.1
+
+###
+
+POST http://localhost:9002/mesa/crear HTTP/1.1
+content-type: application/json
+
+{
+    "numero": 50,
+    "centroVotacion": 5
+}
+
+###
+
+GET http://localhost:9002/mesa/ver/1 HTTP/1.1
+content-type: application/json
+
+###
+
+PUT http://localhost:9002/mesa/editar/3 HTTP/1.1
+content-type: application/json
+
+{
+    "numero": 25,
+    "centroVotacion": 6
+}
+
+###
+
+DELETE http://localhost:9002/mesa/borrar/3 HTTP/1.1

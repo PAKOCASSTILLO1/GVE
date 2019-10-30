@@ -1,0 +1,32 @@
+GET http://localhost:9002/municipio/listar HTTP/1.1
+
+###
+
+POST http://localhost:9002/municipio/crear HTTP/1.1
+content-type: application/json
+
+{
+    "nombre": "MUNICIPIO PRUEBA",
+    "departamento": 10,
+    "codigoMunicipio": "1"
+}
+
+###
+
+GET http://localhost:9002/municipio/ver/40 HTTP/1.1
+content-type: application/json
+
+###
+
+PUT http://localhost:9002/municipio/editar/40 HTTP/1.1
+content-type: application/json
+
+{
+    "nombre": "MUNICIPIO PRUEBA EDITAR 2",
+    "departamento": 15,
+    "codigoMunicipio": "2"
+}
+
+###
+
+DELETE http://localhost:9002/municipio/borrar/40 HTTP/1.1

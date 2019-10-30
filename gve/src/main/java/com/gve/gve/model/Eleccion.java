@@ -4,12 +4,15 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Eleccion {
     @Id
     @Column(name = "cod_eleccion")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int cod_eleccion;
 
     @Column(name = "fecha_eleccion")
@@ -25,13 +28,22 @@ public class Eleccion {
     private String numeroDecreto;
 
     @Column(name = "fecha_creo")
-    private Date fechaCreo;
+    private Date fechaCreo = new Date();
 
     @Column(name = "fecha_modifico")
     private Date fechaModifico;
 
 
     public Eleccion() {
+    }
+
+    public Eleccion modified(Eleccion body) {
+        this.fechaEleccion = body.getFechaEleccion();
+        this.objetoElección = body.getObjetoElección();
+        this.fechaSegundaVuelta = body.getFechaSegundaVuelta();
+        this.numeroDecreto = body.getNumeroDecreto();
+        this.fechaModifico = new Date();
+        return this;
     }
 
     public Eleccion(int cod_eleccion, Date fechaEleccion, String objetoElección, Date fechaSegundaVuelta, String numeroDecreto, Date fechaCreo, Date fechaModifico) {

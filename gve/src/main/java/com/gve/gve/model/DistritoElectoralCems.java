@@ -9,37 +9,55 @@ public class DistritoElectoralCems {
 
     @Id
     @Column(name = "cod_distrito")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int cod_distrito;
 
     private String nombre;
     private int categoria;
     private int anio;
+    private int municipio;
+    private int eleccion;
 
     // FOREIGN KEY
     @ManyToOne
-    @JoinColumn(name = "FK_COD_MUNICIPIO_DISTRITO", nullable = false, updatable = false)
+    @JoinColumn(name = "cod_municipio", nullable = false, updatable = false)
     private Municipio cod_municipio;
 
     @Column(name = "fecha_creo")
-    private Date fechaCreo;
+    private Date fechaCreo = new Date();
 
     @Column(name = "fecha_modifico")
     private Date fechaModifico;
-    private byte estado;
+    private byte estado = 1;
 
     // FOREIGN KEY
     @ManyToOne
-    @JoinColumn(name = "FK_COD_ELECCION_DISTRITO", nullable = false, updatable = false)
+    @JoinColumn(name = "cod_eleccion", nullable = false, updatable = false)
     private Eleccion cod_eleccion;
+
+    public DistritoElectoralCems modified(DistritoElectoralCems body, Municipio municipio, Eleccion eleccion) {
+        this.nombre = body.getNombre();
+        this.categoria = body.getCategoria();
+        this.anio = body.getAnio();
+        this.eleccion = eleccion.getCod_eleccion();
+        this.municipio = municipio.getCodMunicipio();
+        this.cod_municipio = municipio;
+        this.fechaModifico = new Date();
+        this.cod_eleccion = eleccion;
+        return this;
+    }
+
 
     public DistritoElectoralCems() {
     }
 
-    public DistritoElectoralCems(int cod_distrito, String nombre, int categoria, int anio, Municipio cod_municipio, Date fechaCreo, Date fechaModifico, byte estado, Eleccion cod_eleccion) {
+    public DistritoElectoralCems(int cod_distrito, String nombre, int categoria, int anio, int municipio, int eleccion, Municipio cod_municipio, Date fechaCreo, Date fechaModifico, byte estado, Eleccion cod_eleccion) {
         this.cod_distrito = cod_distrito;
         this.nombre = nombre;
         this.categoria = categoria;
         this.anio = anio;
+        this.municipio = municipio;
+        this.eleccion = eleccion;
         this.cod_municipio = cod_municipio;
         this.fechaCreo = fechaCreo;
         this.fechaModifico = fechaModifico;
@@ -77,6 +95,22 @@ public class DistritoElectoralCems {
 
     public void setAnio(int anio) {
         this.anio = anio;
+    }
+
+    public int getMunicipio() {
+        return this.municipio;
+    }
+
+    public void setMunicipio(int municipio) {
+        this.municipio = municipio;
+    }
+
+    public int getEleccion() {
+        return this.eleccion;
+    }
+
+    public void setEleccion(int eleccion) {
+        this.eleccion = eleccion;
     }
 
     public Municipio getCod_municipio() {
@@ -139,6 +173,16 @@ public class DistritoElectoralCems {
         return this;
     }
 
+    public DistritoElectoralCems municipio(int municipio) {
+        this.municipio = municipio;
+        return this;
+    }
+
+    public DistritoElectoralCems eleccion(int eleccion) {
+        this.eleccion = eleccion;
+        return this;
+    }
+
     public DistritoElectoralCems cod_municipio(Municipio cod_municipio) {
         this.cod_municipio = cod_municipio;
         return this;
@@ -163,5 +207,6 @@ public class DistritoElectoralCems {
         this.cod_eleccion = cod_eleccion;
         return this;
     }
+
 
 }

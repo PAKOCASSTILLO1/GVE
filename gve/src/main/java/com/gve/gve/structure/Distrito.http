@@ -1,0 +1,37 @@
+GET http://localhost:9002/distrito/listar HTTP/1.1
+
+###
+
+POST http://localhost:9002/distrito/crear HTTP/1.1
+content-type: application/json
+
+{
+    "nombre": "DISTRITO PRUEBA",
+    "categoria": 1,
+    "anio": 2019,
+    "municipio": 2,
+    "eleccion": 2
+}
+
+###
+
+GET http://localhost:9002/distrito/ver/7 HTTP/1.1
+content-type: application/json
+
+###
+
+PUT http://localhost:9002/distrito/editar/7 HTTP/1.1
+content-type: application/json
+
+{
+    "nombre": "DISTRITO EDITADO 2",
+    "categoria": 1,
+    "anio": 2019,
+    "municipio": 1,
+    "eleccion": 1
+}
+
+
+###
+
+DELETE http://localhost:9002/distrito/borrar/7 HTTP/1.1

@@ -9,6 +9,7 @@ public class CentroVotacion {
 
     @Id
     @Column(name = "cod_centro_votacion")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int cod_centro_votacion;
 
     private String nombre;
@@ -18,35 +19,46 @@ public class CentroVotacion {
 
     private String direccion;
     private String telefono;
+    private int distrito;
 
     // FOREIGN KEY
     @ManyToOne
-    @JoinColumn(name = "FK_COD_DISTRITO_CENTRO_VOTACION", nullable = false, updatable = false)
+    @JoinColumn(name = "cod_distrito", nullable = false, updatable = false)
     private DistritoElectoralCems cod_distrito;
 
     @Column(name = "fecha_creo")
-    private Date fechaCreo;
+    private Date fechaCreo = new Date();
 
     @Column(name = "fecha_modifico")
     private Date fechaModifico;
 
-    private byte estado;
+    private byte estado = 1;
+
+    public CentroVotacion modified(CentroVotacion body, DistritoElectoralCems distrito) {
+        this.nombre = body.getNombre();
+        this.direccion = body.getDireccion();
+        this.telefono = body.getTelefono();
+        this.distrito = distrito.getCod_distrito();
+        this.cod_distrito = distrito;
+        this.fechaModifico = new Date();
+        return this;
+    }
 
 
     public CentroVotacion() {
     }
 
-    // public CentroVotacion(int cod_centro_votacion, String nombre, Object ubicacionGeografica, String direccion, String telefono, DistritoElectoralCems cod_distrito, Date fechaCreo, Date fechaModifico, byte estado) {
-    //     this.cod_centro_votacion = cod_centro_votacion;
-    //     this.nombre = nombre;
-    //     this.ubicacionGeografica = ubicacionGeografica;
-    //     this.direccion = direccion;
-    //     this.telefono = telefono;
-    //     this.cod_distrito = cod_distrito;
-    //     this.fechaCreo = fechaCreo;
-    //     this.fechaModifico = fechaModifico;
-    //     this.estado = estado;
-    // }
+    public CentroVotacion(int cod_centro_votacion, String nombre, String direccion, String telefono, int distrito, DistritoElectoralCems cod_distrito, Date fechaCreo, Date fechaModifico, byte estado) {
+        this.cod_centro_votacion = cod_centro_votacion;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.distrito = distrito;
+        this.cod_distrito = cod_distrito;
+        this.fechaCreo = fechaCreo;
+        this.fechaModifico = fechaModifico;
+        this.estado = estado;
+    }
 
     public int getCod_centro_votacion() {
         return this.cod_centro_votacion;
@@ -64,14 +76,6 @@ public class CentroVotacion {
         this.nombre = nombre;
     }
 
-    // public Object getUbicacionGeografica() {
-    //     return this.ubicacionGeografica;
-    // }
-
-    // public void setUbicacionGeografica(Object ubicacionGeografica) {
-    //     this.ubicacionGeografica = ubicacionGeografica;
-    // }
-
     public String getDireccion() {
         return this.direccion;
     }
@@ -86,6 +90,14 @@ public class CentroVotacion {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    public int getDistrito() {
+        return this.distrito;
+    }
+
+    public void setDistrito(int distrito) {
+        this.distrito = distrito;
     }
 
     public DistritoElectoralCems getCod_distrito() {
@@ -130,11 +142,6 @@ public class CentroVotacion {
         return this;
     }
 
-    // public CentroVotacion ubicacionGeografica(Object ubicacionGeografica) {
-    //     this.ubicacionGeografica = ubicacionGeografica;
-    //     return this;
-    // }
-
     public CentroVotacion direccion(String direccion) {
         this.direccion = direccion;
         return this;
@@ -142,6 +149,11 @@ public class CentroVotacion {
 
     public CentroVotacion telefono(String telefono) {
         this.telefono = telefono;
+        return this;
+    }
+
+    public CentroVotacion distrito(int distrito) {
+        this.distrito = distrito;
         return this;
     }
 
@@ -164,5 +176,6 @@ public class CentroVotacion {
         this.estado = estado;
         return this;
     }
+
 
 }
