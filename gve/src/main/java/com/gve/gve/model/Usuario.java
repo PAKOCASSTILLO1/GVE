@@ -18,6 +18,8 @@ public class Usuario {
     private String password;
     private String email;
 
+    private int padron;
+
     @Column(name = "usuario_creo")
     private String usuarioCreo;
 
@@ -32,17 +34,18 @@ public class Usuario {
 
     // FOREIGN KEY
     @ManyToOne
-    @JoinColumn(name = "FK_COD_PADRON_USUARIO", nullable = false, updatable = false)
+    @JoinColumn(name = "cod_padron", nullable = false, updatable = false)
     private Padron cod_padron;
 
     public Usuario() {
     }
 
-    public Usuario(int cod_usuario, String username, String password, String email, String usuarioCreo, Date fechaCreo, Integer usuarioModifico, Date fechaModifico, Padron cod_padron) {
+    public Usuario(int cod_usuario, String username, String password, String email, int padron, String usuarioCreo, Date fechaCreo, Integer usuarioModifico, Date fechaModifico, Padron cod_padron) {
         this.cod_usuario = cod_usuario;
         this.username = username;
         this.password = password;
         this.email = email;
+        this.padron = padron;
         this.usuarioCreo = usuarioCreo;
         this.fechaCreo = fechaCreo;
         this.usuarioModifico = usuarioModifico;
@@ -80,6 +83,14 @@ public class Usuario {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getPadron() {
+        return this.padron;
+    }
+
+    public void setPadron(int padron) {
+        this.padron = padron;
     }
 
     public String getUsuarioCreo() {
@@ -139,6 +150,11 @@ public class Usuario {
 
     public Usuario email(String email) {
         this.email = email;
+        return this;
+    }
+
+    public Usuario padron(int padron) {
+        this.padron = padron;
         return this;
     }
 

@@ -10,7 +10,7 @@ public class TipoCargo {
     @Column(name = "cod_tipo_cargo")
     private int cod_tipo_cargo;
     private String nombre;
-    private byte estado;
+    private byte estado =1;
 
     public TipoCargo() {
     }

@@ -14,9 +14,11 @@ public class OrganizacionPolitica {
     private String nombre;
     private String descripcion;
 
+    private int tipoOrganizacion;
+
     // FOREIGN KEY
     @ManyToOne
-    @JoinColumn(name = "FK_COD_TIPO_ORG_ORG_PLT", nullable = false, updatable = false)
+    @JoinColumn(name = "cod_tipo_organizacion", nullable = false, updatable = false)
     private TipoOrganizacion cod_tipo_organizacion;
 
     @Column(name = "fecha_constitucion")
@@ -31,16 +33,16 @@ public class OrganizacionPolitica {
     @Column(name = "fecha_modifico")
     private Date fechaModifico;
 
-    private byte estado;
-
+    private byte estado = 1;
 
     public OrganizacionPolitica() {
     }
 
-    public OrganizacionPolitica(int cod_organizacion_politica, String nombre, String descripcion, TipoOrganizacion cod_tipo_organizacion, Date fechaConstitucion, Date fechaCancelacion, Date fechaCreo, Date fechaModifico, byte estado) {
+    public OrganizacionPolitica(int cod_organizacion_politica, String nombre, String descripcion, int tipoOrganizacion, TipoOrganizacion cod_tipo_organizacion, Date fechaConstitucion, Date fechaCancelacion, Date fechaCreo, Date fechaModifico, byte estado) {
         this.cod_organizacion_politica = cod_organizacion_politica;
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.tipoOrganizacion = tipoOrganizacion;
         this.cod_tipo_organizacion = cod_tipo_organizacion;
         this.fechaConstitucion = fechaConstitucion;
         this.fechaCancelacion = fechaCancelacion;
@@ -71,6 +73,14 @@ public class OrganizacionPolitica {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public int getTipoOrganizacion() {
+        return this.tipoOrganizacion;
+    }
+
+    public void setTipoOrganizacion(int tipoOrganizacion) {
+        this.tipoOrganizacion = tipoOrganizacion;
     }
 
     public TipoOrganizacion getCod_tipo_organizacion() {
@@ -136,6 +146,11 @@ public class OrganizacionPolitica {
         return this;
     }
 
+    public OrganizacionPolitica tipoOrganizacion(int tipoOrganizacion) {
+        this.tipoOrganizacion = tipoOrganizacion;
+        return this;
+    }
+
     public OrganizacionPolitica cod_tipo_organizacion(TipoOrganizacion cod_tipo_organizacion) {
         this.cod_tipo_organizacion = cod_tipo_organizacion;
         return this;
@@ -165,6 +180,5 @@ public class OrganizacionPolitica {
         this.estado = estado;
         return this;
     }
-
 
 }

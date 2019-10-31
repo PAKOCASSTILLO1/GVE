@@ -15,16 +15,19 @@ public class Voto {
     @Column(name = "cod_voto")
     private int cod_voto;
 
+    private int tipoVotacion;
+    private int mesa;
+
     // FOREIGN KEY
     @ManyToOne
-    @JoinColumn(name = "FK_COD_TIPO_VOTACION_VOTO", nullable = false, updatable = false)
+    @JoinColumn(name = "cod_tipo_votacion", nullable = false, updatable = false)
     private TipoVotacion cod_tipo_votacion;
 
     private Date fecha;
 
     // FOREIGN KEY
     @ManyToOne
-    @JoinColumn(name = "FK_COD_MESA_VOTO", nullable = false, updatable = false)
+    @JoinColumn(name = "cod_mesa", nullable = false, updatable = false)
     private Mesa cod_mesa;
 
     private byte[] codigoQr;
@@ -33,8 +36,10 @@ public class Voto {
     public Voto() {
     }
 
-    public Voto(int cod_voto, TipoVotacion cod_tipo_votacion, Date fecha, Mesa cod_mesa, byte[] codigoQr) {
+    public Voto(int cod_voto, int tipoVotacion, int mesa, TipoVotacion cod_tipo_votacion, Date fecha, Mesa cod_mesa, byte[] codigoQr) {
         this.cod_voto = cod_voto;
+        this.tipoVotacion = tipoVotacion;
+        this.mesa = mesa;
         this.cod_tipo_votacion = cod_tipo_votacion;
         this.fecha = fecha;
         this.cod_mesa = cod_mesa;
@@ -47,6 +52,22 @@ public class Voto {
 
     public void setCod_voto(int cod_voto) {
         this.cod_voto = cod_voto;
+    }
+
+    public int getTipoVotacion() {
+        return this.tipoVotacion;
+    }
+
+    public void setTipoVotacion(int tipoVotacion) {
+        this.tipoVotacion = tipoVotacion;
+    }
+
+    public int getMesa() {
+        return this.mesa;
+    }
+
+    public void setMesa(int mesa) {
+        this.mesa = mesa;
     }
 
     public TipoVotacion getCod_tipo_votacion() {
@@ -83,6 +104,16 @@ public class Voto {
 
     public Voto cod_voto(int cod_voto) {
         this.cod_voto = cod_voto;
+        return this;
+    }
+
+    public Voto tipoVotacion(int tipoVotacion) {
+        this.tipoVotacion = tipoVotacion;
+        return this;
+    }
+
+    public Voto mesa(int mesa) {
+        this.mesa = mesa;
         return this;
     }
 

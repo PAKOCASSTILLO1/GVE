@@ -21,12 +21,15 @@ public class Afiliado {
     @Column(name = "fecha_finalizacion")
     private String fechaFinalizacion;
 
+    private int organizacionPolitica;
+    private int padron;
+
     @ManyToOne
-    @JoinColumn(name = "FK_COD_ORGANIZACION_POLITICA_AFILIADO", nullable = false, updatable = false)
+    @JoinColumn(name = "cod_organizacion_politica", nullable = false, updatable = false)
     private OrganizacionPolitica cod_organizacion_politica;
 
     @ManyToOne
-    @JoinColumn(name = "FK_COD_PADRON_AFILIADO", nullable = false, updatable = false)
+    @JoinColumn(name = "cod_padron", nullable = false, updatable = false)
     private Padron cod_padron;
 
     @Column(name = "fecha_creo")
@@ -35,16 +38,27 @@ public class Afiliado {
     @Column(name = "fecha_modifico")
     private Date fechaModifico;
 
-    private Byte estado;
+    private Byte estado =1;
 
+    public Afiliado modified( Afiliado body, Padron padron, OrganizacionPolitica organizacionPolitica) {
+        this.fechaAfilicacion = body.getFechaAfilicacion();
+        this.fechaFinalizacion = body.getFechaFinalizacion();
+        this.organizacionPolitica = organizacionPolitica.getCod_organizacion_politica();
+        this.padron = padron.getCod_padron();
+        this.cod_organizacion_politica = organizacionPolitica;
+        this.cod_padron = padron;
+        return this;
+    }
 
     public Afiliado() {
     }
 
-    public Afiliado(int cod_afiliado, Date fechaAfilicacion, String fechaFinalizacion, OrganizacionPolitica cod_organizacion_politica, Padron cod_padron, Date fechaCreo, Date fechaModifico, Byte estado) {
+    public Afiliado(int cod_afiliado, Date fechaAfilicacion, String fechaFinalizacion, int organizacionPolitica, int padron, OrganizacionPolitica cod_organizacion_politica, Padron cod_padron, Date fechaCreo, Date fechaModifico, Byte estado) {
         this.cod_afiliado = cod_afiliado;
         this.fechaAfilicacion = fechaAfilicacion;
         this.fechaFinalizacion = fechaFinalizacion;
+        this.organizacionPolitica = organizacionPolitica;
+        this.padron = padron;
         this.cod_organizacion_politica = cod_organizacion_politica;
         this.cod_padron = cod_padron;
         this.fechaCreo = fechaCreo;
@@ -74,6 +88,22 @@ public class Afiliado {
 
     public void setFechaFinalizacion(String fechaFinalizacion) {
         this.fechaFinalizacion = fechaFinalizacion;
+    }
+
+    public int getOrganizacionPolitica() {
+        return this.organizacionPolitica;
+    }
+
+    public void setOrganizacionPolitica(int organizacionPolitica) {
+        this.organizacionPolitica = organizacionPolitica;
+    }
+
+    public int getPadron() {
+        return this.padron;
+    }
+
+    public void setPadron(int padron) {
+        this.padron = padron;
     }
 
     public OrganizacionPolitica getCod_organizacion_politica() {
@@ -128,6 +158,16 @@ public class Afiliado {
 
     public Afiliado fechaFinalizacion(String fechaFinalizacion) {
         this.fechaFinalizacion = fechaFinalizacion;
+        return this;
+    }
+
+    public Afiliado organizacionPolitica(int organizacionPolitica) {
+        this.organizacionPolitica = organizacionPolitica;
+        return this;
+    }
+
+    public Afiliado padron(int padron) {
+        this.padron = padron;
         return this;
     }
 

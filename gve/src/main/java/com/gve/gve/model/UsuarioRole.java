@@ -11,6 +11,9 @@ public class UsuarioRole {
     @Column(name = "cod_usuario_rol")
     private int cod_usuario_rol;
 
+    private int usuario;
+    private int rol;
+
     @Column(name = "usuario_creo")
     private int usuarioCreo;
 
@@ -23,24 +26,25 @@ public class UsuarioRole {
     @Column(name = "fecha_modifico")
     private Date fechaModifico;
 
-    private int estado;
+    private int estado =1;
 
     // FOREIGN KEY
     @ManyToOne
-    @JoinColumn(name = "FK_COD_USUARIO_UR", nullable = false, updatable = false)
+    @JoinColumn(name = "cod_usuario", nullable = false, updatable = false)
     private Usuario cod_usuario;
 
     // FOREIGN KEY
     @ManyToOne
-    @JoinColumn(name = "FK_COD_ROLE_UR", nullable = false, updatable = false)
+    @JoinColumn(name = "cod_role", nullable = false, updatable = false)
     private Rol cod_role;
-
 
     public UsuarioRole() {
     }
 
-    public UsuarioRole(int cod_usuario_rol, int usuarioCreo, Date fechaCreo, Integer usuarioModifico, Date fechaModifico, int estado, Usuario cod_usuario, Rol cod_role) {
+    public UsuarioRole(int cod_usuario_rol, int usuario, int rol, int usuarioCreo, Date fechaCreo, Integer usuarioModifico, Date fechaModifico, int estado, Usuario cod_usuario, Rol cod_role) {
         this.cod_usuario_rol = cod_usuario_rol;
+        this.usuario = usuario;
+        this.rol = rol;
         this.usuarioCreo = usuarioCreo;
         this.fechaCreo = fechaCreo;
         this.usuarioModifico = usuarioModifico;
@@ -56,6 +60,22 @@ public class UsuarioRole {
 
     public void setCod_usuario_rol(int cod_usuario_rol) {
         this.cod_usuario_rol = cod_usuario_rol;
+    }
+
+    public int getUsuario() {
+        return this.usuario;
+    }
+
+    public void setUsuario(int usuario) {
+        this.usuario = usuario;
+    }
+
+    public int getRol() {
+        return this.rol;
+    }
+
+    public void setRol(int rol) {
+        this.rol = rol;
     }
 
     public int getUsuarioCreo() {
@@ -116,6 +136,16 @@ public class UsuarioRole {
 
     public UsuarioRole cod_usuario_rol(int cod_usuario_rol) {
         this.cod_usuario_rol = cod_usuario_rol;
+        return this;
+    }
+
+    public UsuarioRole usuario(int usuario) {
+        this.usuario = usuario;
+        return this;
+    }
+
+    public UsuarioRole rol(int rol) {
+        this.rol = rol;
         return this;
     }
 

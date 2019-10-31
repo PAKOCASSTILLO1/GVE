@@ -11,19 +11,23 @@ public class FiscalOrganizacion {
     @Column(name = "cod_fiscal")
     private int cod_fiscal;
 
+    private int organizacionPolitica;
+    private int tipoFiscal;
+    private int afiliado;
+
     // FOREIGN KEY
     @ManyToOne
-    @JoinColumn(name = "FK_COD_ORGANIZACION_POLITICA_FISCAL_O", nullable = false, updatable = false)
+    @JoinColumn(name = "cod_organizacion_politica", nullable = false, updatable = false)
     private OrganizacionPolitica cod_organizacion_politica;
 
     // FOREIGN KEY
     @ManyToOne
-    @JoinColumn(name = "FK_COD_TIPO_FISCAL_FISCAL_O", nullable = false, updatable = false)
+    @JoinColumn(name = "cod_tipo_fiscal", nullable = false, updatable = false)
     private TipoFiscal cod_tipo_fiscal;
 
     // FOREIGN KEY
     @ManyToOne
-    @JoinColumn(name = "FK_COD_AFILIADO_FISCAL_O", nullable = false, updatable = false)
+    @JoinColumn(name = "cod_afiliado", nullable = false, updatable = false)
     private Afiliado cod_afiliado;
 
     @Column(name = "fecha_creo")
@@ -32,14 +36,17 @@ public class FiscalOrganizacion {
     @Column(name = "fecha_modifico")
     private Date fechaModifico;
 
-    private byte estado;
+    private byte estado =1;
 
 
     public FiscalOrganizacion() {
     }
 
-    public FiscalOrganizacion(int cod_fiscal, OrganizacionPolitica cod_organizacion_politica, TipoFiscal cod_tipo_fiscal, Afiliado cod_afiliado, Date fechaCreo, Date fechaModifico, byte estado) {
+    public FiscalOrganizacion(int cod_fiscal, int organizacionPolitica, int tipoFiscal, int afiliado, OrganizacionPolitica cod_organizacion_politica, TipoFiscal cod_tipo_fiscal, Afiliado cod_afiliado, Date fechaCreo, Date fechaModifico, byte estado) {
         this.cod_fiscal = cod_fiscal;
+        this.organizacionPolitica = organizacionPolitica;
+        this.tipoFiscal = tipoFiscal;
+        this.afiliado = afiliado;
         this.cod_organizacion_politica = cod_organizacion_politica;
         this.cod_tipo_fiscal = cod_tipo_fiscal;
         this.cod_afiliado = cod_afiliado;
@@ -54,6 +61,30 @@ public class FiscalOrganizacion {
 
     public void setCod_fiscal(int cod_fiscal) {
         this.cod_fiscal = cod_fiscal;
+    }
+
+    public int getOrganizacionPolitica() {
+        return this.organizacionPolitica;
+    }
+
+    public void setOrganizacionPolitica(int organizacionPolitica) {
+        this.organizacionPolitica = organizacionPolitica;
+    }
+
+    public int getTipoFiscal() {
+        return this.tipoFiscal;
+    }
+
+    public void setTipoFiscal(int tipoFiscal) {
+        this.tipoFiscal = tipoFiscal;
+    }
+
+    public int getAfiliado() {
+        return this.afiliado;
+    }
+
+    public void setAfiliado(int afiliado) {
+        this.afiliado = afiliado;
     }
 
     public OrganizacionPolitica getCod_organizacion_politica() {
@@ -106,6 +137,21 @@ public class FiscalOrganizacion {
 
     public FiscalOrganizacion cod_fiscal(int cod_fiscal) {
         this.cod_fiscal = cod_fiscal;
+        return this;
+    }
+
+    public FiscalOrganizacion organizacionPolitica(int organizacionPolitica) {
+        this.organizacionPolitica = organizacionPolitica;
+        return this;
+    }
+
+    public FiscalOrganizacion tipoFiscal(int tipoFiscal) {
+        this.tipoFiscal = tipoFiscal;
+        return this;
+    }
+
+    public FiscalOrganizacion afiliado(int afiliado) {
+        this.afiliado = afiliado;
         return this;
     }
 

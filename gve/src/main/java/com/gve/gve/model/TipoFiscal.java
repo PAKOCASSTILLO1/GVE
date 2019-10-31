@@ -12,7 +12,7 @@ public class TipoFiscal {
     private int cod_tipo_fiscal;
 
     private String nombre;
-    private byte estado;
+    private byte estado =1;
 
     @Column(name = "usuario_creo")
     private int usuarioCreo;

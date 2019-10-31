@@ -14,14 +14,19 @@ public class Candidato {
     @Column(name = "cod_candidato")
     private int cod_candidato;
 
+    private int tipoVotacion;
+    private int organizacionPolitica;
+    private int afiliado;
+    private int tipoCargo;
+
     // FOREIGN KEY
     @ManyToOne
-    @JoinColumn(name = "FK_COD_TIPO_VOTACION_CANDIDATO", nullable = false, updatable = false)
+    @JoinColumn(name = "cod_tipo_votacion", nullable = false, updatable = false)
     private TipoVotacion cod_tipo_votacion;
 
     // FOREIGN KEY
     @ManyToOne
-    @JoinColumn(name = "FK_COD_ORGANIZACION_POLITICA_CANDIDATO", nullable = false, updatable = false)
+    @JoinColumn(name = "cod_organizacion_politica", nullable = false, updatable = false)
     private OrganizacionPolitica cod_organizacion_politica;
 
     @Column(name = "fecha_creo")
@@ -30,24 +35,28 @@ public class Candidato {
     @Column(name = "fecha_modifico")
     private Date fechaModifico;
 
-    private byte estado;
+    private byte estado =1;
 
     // FOREIGN KEY
     @ManyToOne
-    @JoinColumn(name = "FK_COD_AFILIADO_CANDIDATO", nullable = false, updatable = false)
+    @JoinColumn(name = "cod_afiliado", nullable = false, updatable = false)
     private Afiliado cod_afiliado;
 
     // FOREIGN KEY
     @ManyToOne
-    @JoinColumn(name = "FK_COD_TIPO_CARGO_CANDIDATO", nullable = false, updatable = false)
+    @JoinColumn(name = "cod_tipo_cargo", nullable = false, updatable = false)
     private TipoCargo cod_tipo_cargo;
 
 
     public Candidato() {
     }
 
-    public Candidato(int cod_candidato, TipoVotacion cod_tipo_votacion, OrganizacionPolitica cod_organizacion_politica, Date fechaCreo, Date fechaModifico, byte estado, Afiliado cod_afiliado, TipoCargo cod_tipo_cargo) {
+    public Candidato(int cod_candidato, int tipoVotacion, int organizacionPolitica, int afiliado, int tipoCargo, TipoVotacion cod_tipo_votacion, OrganizacionPolitica cod_organizacion_politica, Date fechaCreo, Date fechaModifico, byte estado, Afiliado cod_afiliado, TipoCargo cod_tipo_cargo) {
         this.cod_candidato = cod_candidato;
+        this.tipoVotacion = tipoVotacion;
+        this.organizacionPolitica = organizacionPolitica;
+        this.afiliado = afiliado;
+        this.tipoCargo = tipoCargo;
         this.cod_tipo_votacion = cod_tipo_votacion;
         this.cod_organizacion_politica = cod_organizacion_politica;
         this.fechaCreo = fechaCreo;
@@ -63,6 +72,38 @@ public class Candidato {
 
     public void setCod_candidato(int cod_candidato) {
         this.cod_candidato = cod_candidato;
+    }
+
+    public int getTipoVotacion() {
+        return this.tipoVotacion;
+    }
+
+    public void setTipoVotacion(int tipoVotacion) {
+        this.tipoVotacion = tipoVotacion;
+    }
+
+    public int getOrganizacionPolitica() {
+        return this.organizacionPolitica;
+    }
+
+    public void setOrganizacionPolitica(int organizacionPolitica) {
+        this.organizacionPolitica = organizacionPolitica;
+    }
+
+    public int getAfiliado() {
+        return this.afiliado;
+    }
+
+    public void setAfiliado(int afiliado) {
+        this.afiliado = afiliado;
+    }
+
+    public int getTipoCargo() {
+        return this.tipoCargo;
+    }
+
+    public void setTipoCargo(int tipoCargo) {
+        this.tipoCargo = tipoCargo;
     }
 
     public TipoVotacion getCod_tipo_votacion() {
@@ -123,6 +164,26 @@ public class Candidato {
 
     public Candidato cod_candidato(int cod_candidato) {
         this.cod_candidato = cod_candidato;
+        return this;
+    }
+
+    public Candidato tipoVotacion(int tipoVotacion) {
+        this.tipoVotacion = tipoVotacion;
+        return this;
+    }
+
+    public Candidato organizacionPolitica(int organizacionPolitica) {
+        this.organizacionPolitica = organizacionPolitica;
+        return this;
+    }
+
+    public Candidato afiliado(int afiliado) {
+        this.afiliado = afiliado;
+        return this;
+    }
+
+    public Candidato tipoCargo(int tipoCargo) {
+        this.tipoCargo = tipoCargo;
         return this;
     }
 

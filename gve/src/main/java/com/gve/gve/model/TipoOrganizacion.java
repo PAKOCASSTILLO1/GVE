@@ -11,7 +11,7 @@ public class TipoOrganizacion {
     private int cod_tipo_organizacion;
 
     private String nombre;
-    private byte estado;
+    private byte estado =1;
 
     public TipoOrganizacion() {
     }

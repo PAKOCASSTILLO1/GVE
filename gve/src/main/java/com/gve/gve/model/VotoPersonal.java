@@ -10,20 +10,22 @@ public class VotoPersonal {
     @Column(name = "cod_voto_persona")
     private int cod_voto_persona;
 
+    private int voto;
+
     @Column(name = "cod_candidato")
     private int codCandidato;
 
     // FOREIGN KEY
     @ManyToOne
-    @JoinColumn(name = "FK_COD_VOTO_V_PERSONAL", nullable = false, updatable = false)
+    @JoinColumn(name = "cod_voto", nullable = false, updatable = false)
     private Voto cod_voto;
-
 
     public VotoPersonal() {
     }
 
-    public VotoPersonal(int cod_voto_persona, int codCandidato, Voto cod_voto) {
+    public VotoPersonal(int cod_voto_persona, int voto, int codCandidato, Voto cod_voto) {
         this.cod_voto_persona = cod_voto_persona;
+        this.voto = voto;
         this.codCandidato = codCandidato;
         this.cod_voto = cod_voto;
     }
@@ -34,6 +36,14 @@ public class VotoPersonal {
 
     public void setCod_voto_persona(int cod_voto_persona) {
         this.cod_voto_persona = cod_voto_persona;
+    }
+
+    public int getVoto() {
+        return this.voto;
+    }
+
+    public void setVoto(int voto) {
+        this.voto = voto;
     }
 
     public int getCodCandidato() {
@@ -54,6 +64,11 @@ public class VotoPersonal {
 
     public VotoPersonal cod_voto_persona(int cod_voto_persona) {
         this.cod_voto_persona = cod_voto_persona;
+        return this;
+    }
+
+    public VotoPersonal voto(int voto) {
+        this.voto = voto;
         return this;
     }
 

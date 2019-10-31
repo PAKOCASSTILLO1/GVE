@@ -15,14 +15,17 @@ public class Junta {
     @Column(name = "cod_junta")
     private int cod_junta;
 
+    private int mesa;
+    private int padron;
+
     // FOREIGN KEY
     @ManyToOne
-    @JoinColumn(name = "FK_COD_MESA_JUNTA", nullable = false, updatable = false)
+    @JoinColumn(name = "cod_mesa", nullable = false, updatable = false)
     private Mesa cod_mesa;
 
     // FOREIGN KEY
     @ManyToOne
-    @JoinColumn(name = "FK_COD_PADRON_JUNTA", nullable = false, updatable = false)
+    @JoinColumn(name = "cod_padron", nullable = false, updatable = false)
     private Padron cod_padron;
 
     private byte cargo;
@@ -42,14 +45,15 @@ public class Junta {
     @Column(name = "fecha_modifico")
     private Date fechaModifico;
 
-    private byte estado;
-
+    private byte estado =1;
 
     public Junta() {
     }
 
-    public Junta(int cod_junta, Mesa cod_mesa, Padron cod_padron, byte cargo, byte tipoJunta, int usuarioCreo, Date fechaCreo, Integer usuarioModifico, Date fechaModifico, byte estado) {
+    public Junta(int cod_junta, int mesa, int padron, Mesa cod_mesa, Padron cod_padron, byte cargo, byte tipoJunta, int usuarioCreo, Date fechaCreo, Integer usuarioModifico, Date fechaModifico, byte estado) {
         this.cod_junta = cod_junta;
+        this.mesa = mesa;
+        this.padron = padron;
         this.cod_mesa = cod_mesa;
         this.cod_padron = cod_padron;
         this.cargo = cargo;
@@ -67,6 +71,22 @@ public class Junta {
 
     public void setCod_junta(int cod_junta) {
         this.cod_junta = cod_junta;
+    }
+
+    public int getMesa() {
+        return this.mesa;
+    }
+
+    public void setMesa(int mesa) {
+        this.mesa = mesa;
+    }
+
+    public int getPadron() {
+        return this.padron;
+    }
+
+    public void setPadron(int padron) {
+        this.padron = padron;
     }
 
     public Mesa getCod_mesa() {
@@ -143,6 +163,16 @@ public class Junta {
 
     public Junta cod_junta(int cod_junta) {
         this.cod_junta = cod_junta;
+        return this;
+    }
+
+    public Junta mesa(int mesa) {
+        this.mesa = mesa;
+        return this;
+    }
+
+    public Junta padron(int padron) {
+        this.padron = padron;
         return this;
     }
 

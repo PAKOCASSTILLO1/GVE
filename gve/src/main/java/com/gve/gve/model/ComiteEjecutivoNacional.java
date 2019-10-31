@@ -11,19 +11,23 @@ public class ComiteEjecutivoNacional {
     @Column(name = "cod_comite_ejecutivo")
     private int cod_comite_ejecutivo;
 
+    private int organizacionPolitica;
+    private int tipoCargo;
+    private int afiliado;
+
     // FOREIGN KEY
     @ManyToOne
-    @JoinColumn(name = "FK_COD_ORGANIZACION_POLITICA_COMITE_E_N", nullable = false, updatable = false)
+    @JoinColumn(name = "cod_organizacion_politica", nullable = false, updatable = false)
     private OrganizacionPolitica cod_organizacion_politica;
 
     // FOREIGN KEY
     @ManyToOne
-    @JoinColumn(name = "FK_COD_TIPO_CARGO_COMITE_E_N", nullable = false, updatable = false)
+    @JoinColumn(name = "cod_tipo_cargo", nullable = false, updatable = false)
     private TipoCargo cod_tipo_cargo;
 
     // FOREIGN KEY
     @ManyToOne
-    @JoinColumn(name = "FK_COD_AFILIADO_COMITE_E_N", nullable = false, updatable = false)
+    @JoinColumn(name = "cod_afiliado", nullable = false, updatable = false)
     private Afiliado cod_afiliado;
 
     @Column(name = "fecha_creo")
@@ -32,13 +36,17 @@ public class ComiteEjecutivoNacional {
     @Column(name = "fecha_modifico")
     private Date fechaModifico;
 
-    private byte estado;
+    private byte estado =1;
+
 
     public ComiteEjecutivoNacional() {
     }
 
-    public ComiteEjecutivoNacional(int cod_comite_ejecutivo, OrganizacionPolitica cod_organizacion_politica, TipoCargo cod_tipo_cargo, Afiliado cod_afiliado, Date fechaCreo, Date fechaModifico, byte estado) {
+    public ComiteEjecutivoNacional(int cod_comite_ejecutivo, int organizacionPolitica, int tipoCargo, int afiliado, OrganizacionPolitica cod_organizacion_politica, TipoCargo cod_tipo_cargo, Afiliado cod_afiliado, Date fechaCreo, Date fechaModifico, byte estado) {
         this.cod_comite_ejecutivo = cod_comite_ejecutivo;
+        this.organizacionPolitica = organizacionPolitica;
+        this.tipoCargo = tipoCargo;
+        this.afiliado = afiliado;
         this.cod_organizacion_politica = cod_organizacion_politica;
         this.cod_tipo_cargo = cod_tipo_cargo;
         this.cod_afiliado = cod_afiliado;
@@ -53,6 +61,30 @@ public class ComiteEjecutivoNacional {
 
     public void setCod_comite_ejecutivo(int cod_comite_ejecutivo) {
         this.cod_comite_ejecutivo = cod_comite_ejecutivo;
+    }
+
+    public int getOrganizacionPolitica() {
+        return this.organizacionPolitica;
+    }
+
+    public void setOrganizacionPolitica(int organizacionPolitica) {
+        this.organizacionPolitica = organizacionPolitica;
+    }
+
+    public int getTipoCargo() {
+        return this.tipoCargo;
+    }
+
+    public void setTipoCargo(int tipoCargo) {
+        this.tipoCargo = tipoCargo;
+    }
+
+    public int getAfiliado() {
+        return this.afiliado;
+    }
+
+    public void setAfiliado(int afiliado) {
+        this.afiliado = afiliado;
     }
 
     public OrganizacionPolitica getCod_organizacion_politica() {
@@ -105,6 +137,21 @@ public class ComiteEjecutivoNacional {
 
     public ComiteEjecutivoNacional cod_comite_ejecutivo(int cod_comite_ejecutivo) {
         this.cod_comite_ejecutivo = cod_comite_ejecutivo;
+        return this;
+    }
+
+    public ComiteEjecutivoNacional organizacionPolitica(int organizacionPolitica) {
+        this.organizacionPolitica = organizacionPolitica;
+        return this;
+    }
+
+    public ComiteEjecutivoNacional tipoCargo(int tipoCargo) {
+        this.tipoCargo = tipoCargo;
+        return this;
+    }
+
+    public ComiteEjecutivoNacional afiliado(int afiliado) {
+        this.afiliado = afiliado;
         return this;
     }
 

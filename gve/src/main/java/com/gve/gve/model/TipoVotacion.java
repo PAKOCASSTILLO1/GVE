@@ -12,7 +12,7 @@ public class TipoVotacion {
 
     private String nombre;
     private String descripcion;
-    private byte estado;
+    private byte estado =1;
 
     public TipoVotacion() {
     }
