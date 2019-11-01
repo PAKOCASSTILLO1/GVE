@@ -1,0 +1,8 @@
+GET http://localhost:9002/fiscalOrg/listar HTTP/1.1
+
+###
+
+GET http://localhost:9002/fiscalOrg/ver/1 HTTP/1.1
+content-type: application/json
+
+###

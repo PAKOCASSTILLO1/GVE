@@ -1,0 +1,8 @@
+GET http://localhost:9002/tipoCargo/listar HTTP/1.1
+
+###
+
+GET http://localhost:9002/tipoCargo/ver/1 HTTP/1.1
+content-type: application/json
+
+###

@@ -32,11 +32,23 @@ public class Voto {
 
     private byte[] codigoQr;
 
+    @Column(name = "usuario_creo")
+    private int usuarioCreo;
+
+    @Column(name = "usuario_modifico")
+    private int usuarioModifico;
+
+    @Column(name = "fecha_creo")
+    private Date fechaCreo = new Date();
+
+    @Column(name = "fecha_modifico")
+    private Date fechaModifico;
+
 
     public Voto() {
     }
 
-    public Voto(int cod_voto, int tipoVotacion, int mesa, TipoVotacion cod_tipo_votacion, Date fecha, Mesa cod_mesa, byte[] codigoQr) {
+    public Voto(int cod_voto, int tipoVotacion, int mesa, TipoVotacion cod_tipo_votacion, Date fecha, Mesa cod_mesa, byte[] codigoQr, int usuarioCreo, int usuarioModifico, Date fechaCreo, Date fechaModifico) {
         this.cod_voto = cod_voto;
         this.tipoVotacion = tipoVotacion;
         this.mesa = mesa;
@@ -44,6 +56,10 @@ public class Voto {
         this.fecha = fecha;
         this.cod_mesa = cod_mesa;
         this.codigoQr = codigoQr;
+        this.usuarioCreo = usuarioCreo;
+        this.usuarioModifico = usuarioModifico;
+        this.fechaCreo = fechaCreo;
+        this.fechaModifico = fechaModifico;
     }
 
     public int getCod_voto() {
@@ -102,6 +118,38 @@ public class Voto {
         this.codigoQr = codigoQr;
     }
 
+    public int getUsuarioCreo() {
+        return this.usuarioCreo;
+    }
+
+    public void setUsuarioCreo(int usuarioCreo) {
+        this.usuarioCreo = usuarioCreo;
+    }
+
+    public int getUsuarioModifico() {
+        return this.usuarioModifico;
+    }
+
+    public void setUsuarioModifico(int usuarioModifico) {
+        this.usuarioModifico = usuarioModifico;
+    }
+
+    public Date getFechaCreo() {
+        return this.fechaCreo;
+    }
+
+    public void setFechaCreo(Date fechaCreo) {
+        this.fechaCreo = fechaCreo;
+    }
+
+    public Date getFechaModifico() {
+        return this.fechaModifico;
+    }
+
+    public void setFechaModifico(Date fechaModifico) {
+        this.fechaModifico = fechaModifico;
+    }
+
     public Voto cod_voto(int cod_voto) {
         this.cod_voto = cod_voto;
         return this;
@@ -134,6 +182,26 @@ public class Voto {
 
     public Voto codigoQr(byte[] codigoQr) {
         this.codigoQr = codigoQr;
+        return this;
+    }
+
+    public Voto usuarioCreo(int usuarioCreo) {
+        this.usuarioCreo = usuarioCreo;
+        return this;
+    }
+
+    public Voto usuarioModifico(int usuarioModifico) {
+        this.usuarioModifico = usuarioModifico;
+        return this;
+    }
+
+    public Voto fechaCreo(Date fechaCreo) {
+        this.fechaCreo = fechaCreo;
+        return this;
+    }
+
+    public Voto fechaModifico(Date fechaModifico) {
+        this.fechaModifico = fechaModifico;
         return this;
     }
 

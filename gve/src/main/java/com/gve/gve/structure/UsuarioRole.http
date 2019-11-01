@@ -1,0 +1,8 @@
+GET http://localhost:9002/usuarioRole/listar HTTP/1.1
+
+###
+
+GET http://localhost:9002/usuarioRole/ver/1 HTTP/1.1
+content-type: application/json
+
+###

@@ -32,8 +32,14 @@ public class Afiliado {
     @JoinColumn(name = "cod_padron", nullable = false, updatable = false)
     private Padron cod_padron;
 
+    @Column(name = "usuario_creo")
+    private int usuarioCreo;
+
+    @Column(name = "usuario_modifico")
+    private int usuarioModifico;
+
     @Column(name = "fecha_creo")
-    private Date fechaCreo;
+    private Date fechaCreo = new Date();
 
     @Column(name = "fecha_modifico")
     private Date fechaModifico;
@@ -47,13 +53,14 @@ public class Afiliado {
         this.padron = padron.getCod_padron();
         this.cod_organizacion_politica = organizacionPolitica;
         this.cod_padron = padron;
+        this.usuarioModifico = body.getUsuarioModifico();
         return this;
     }
 
     public Afiliado() {
     }
 
-    public Afiliado(int cod_afiliado, Date fechaAfilicacion, String fechaFinalizacion, int organizacionPolitica, int padron, OrganizacionPolitica cod_organizacion_politica, Padron cod_padron, Date fechaCreo, Date fechaModifico, Byte estado) {
+    public Afiliado(int cod_afiliado, Date fechaAfilicacion, String fechaFinalizacion, int organizacionPolitica, int padron, OrganizacionPolitica cod_organizacion_politica, Padron cod_padron, int usuarioCreo, int usuarioModifico, Date fechaCreo, Date fechaModifico, Byte estado) {
         this.cod_afiliado = cod_afiliado;
         this.fechaAfilicacion = fechaAfilicacion;
         this.fechaFinalizacion = fechaFinalizacion;
@@ -61,6 +68,8 @@ public class Afiliado {
         this.padron = padron;
         this.cod_organizacion_politica = cod_organizacion_politica;
         this.cod_padron = cod_padron;
+        this.usuarioCreo = usuarioCreo;
+        this.usuarioModifico = usuarioModifico;
         this.fechaCreo = fechaCreo;
         this.fechaModifico = fechaModifico;
         this.estado = estado;
@@ -122,6 +131,22 @@ public class Afiliado {
         this.cod_padron = cod_padron;
     }
 
+    public int getUsuarioCreo() {
+        return this.usuarioCreo;
+    }
+
+    public void setUsuarioCreo(int usuarioCreo) {
+        this.usuarioCreo = usuarioCreo;
+    }
+
+    public int getUsuarioModifico() {
+        return this.usuarioModifico;
+    }
+
+    public void setUsuarioModifico(int usuarioModifico) {
+        this.usuarioModifico = usuarioModifico;
+    }
+
     public Date getFechaCreo() {
         return this.fechaCreo;
     }
@@ -178,6 +203,16 @@ public class Afiliado {
 
     public Afiliado cod_padron(Padron cod_padron) {
         this.cod_padron = cod_padron;
+        return this;
+    }
+
+    public Afiliado usuarioCreo(int usuarioCreo) {
+        this.usuarioCreo = usuarioCreo;
+        return this;
+    }
+
+    public Afiliado usuarioModifico(int usuarioModifico) {
+        this.usuarioModifico = usuarioModifico;
         return this;
     }
 

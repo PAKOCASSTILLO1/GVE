@@ -1,5 +1,7 @@
 package com.gve.gve.model;
 
+import java.util.Date;
+
 import javax.persistence.*;
 
 @Entity
@@ -24,6 +26,18 @@ public class PadronMesa {
     @JoinColumn(name = "cod_padron", nullable = false, updatable = false)
     private Padron cod_padron;
 
+    @Column(name = "usuario_creo")
+    private int usuarioCreo;
+
+    @Column(name = "usuario_modifico")
+    private int usuarioModifico;
+
+    @Column(name = "fecha_creo")
+    private Date fechaCreo = new Date();
+
+    @Column(name = "fecha_modifico")
+    private Date fechaModifico;
+
     private byte estado =1 ;
 
     public PadronMesa modified(PadronMesa body, Padron padron, Mesa mesa) {
@@ -31,19 +45,23 @@ public class PadronMesa {
         this.padron = body.getPadron();
         this.cod_mesa = mesa;
         this.cod_padron = padron;
+        this.usuarioModifico = body.getUsuarioModifico();
         return this;
     }
-
 
     public PadronMesa() {
     }
 
-    public PadronMesa(int cod_mesa_padron, int mesa, int padron, Mesa cod_mesa, Padron cod_padron, byte estado) {
+    public PadronMesa(int cod_mesa_padron, int mesa, int padron, Mesa cod_mesa, Padron cod_padron, int usuarioCreo, int usuarioModifico, Date fechaCreo, Date fechaModifico, byte estado) {
         this.cod_mesa_padron = cod_mesa_padron;
         this.mesa = mesa;
         this.padron = padron;
         this.cod_mesa = cod_mesa;
         this.cod_padron = cod_padron;
+        this.usuarioCreo = usuarioCreo;
+        this.usuarioModifico = usuarioModifico;
+        this.fechaCreo = fechaCreo;
+        this.fechaModifico = fechaModifico;
         this.estado = estado;
     }
 
@@ -87,6 +105,38 @@ public class PadronMesa {
         this.cod_padron = cod_padron;
     }
 
+    public int getUsuarioCreo() {
+        return this.usuarioCreo;
+    }
+
+    public void setUsuarioCreo(int usuarioCreo) {
+        this.usuarioCreo = usuarioCreo;
+    }
+
+    public int getUsuarioModifico() {
+        return this.usuarioModifico;
+    }
+
+    public void setUsuarioModifico(int usuarioModifico) {
+        this.usuarioModifico = usuarioModifico;
+    }
+
+    public Date getFechaCreo() {
+        return this.fechaCreo;
+    }
+
+    public void setFechaCreo(Date fechaCreo) {
+        this.fechaCreo = fechaCreo;
+    }
+
+    public Date getFechaModifico() {
+        return this.fechaModifico;
+    }
+
+    public void setFechaModifico(Date fechaModifico) {
+        this.fechaModifico = fechaModifico;
+    }
+
     public byte getEstado() {
         return this.estado;
     }
@@ -117,6 +167,26 @@ public class PadronMesa {
 
     public PadronMesa cod_padron(Padron cod_padron) {
         this.cod_padron = cod_padron;
+        return this;
+    }
+
+    public PadronMesa usuarioCreo(int usuarioCreo) {
+        this.usuarioCreo = usuarioCreo;
+        return this;
+    }
+
+    public PadronMesa usuarioModifico(int usuarioModifico) {
+        this.usuarioModifico = usuarioModifico;
+        return this;
+    }
+
+    public PadronMesa fechaCreo(Date fechaCreo) {
+        this.fechaCreo = fechaCreo;
+        return this;
+    }
+
+    public PadronMesa fechaModifico(Date fechaModifico) {
+        this.fechaModifico = fechaModifico;
         return this;
     }
 

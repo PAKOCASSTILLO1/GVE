@@ -1,5 +1,7 @@
 package com.gve.gve.model;
 
+import java.util.Date;
+
 import javax.persistence.*;
 
 @Entity
@@ -20,14 +22,30 @@ public class VotoPersonal {
     @JoinColumn(name = "cod_voto", nullable = false, updatable = false)
     private Voto cod_voto;
 
+    @Column(name = "usuario_creo")
+    private int usuarioCreo;
+
+    @Column(name = "usuario_modifico")
+    private int usuarioModifico;
+
+    @Column(name = "fecha_creo")
+    private Date fechaCreo = new Date();
+
+    @Column(name = "fecha_modifico")
+    private Date fechaModifico;
+
     public VotoPersonal() {
     }
 
-    public VotoPersonal(int cod_voto_persona, int voto, int codCandidato, Voto cod_voto) {
+    public VotoPersonal(int cod_voto_persona, int voto, int codCandidato, Voto cod_voto, int usuarioCreo, int usuarioModifico, Date fechaCreo, Date fechaModifico) {
         this.cod_voto_persona = cod_voto_persona;
         this.voto = voto;
         this.codCandidato = codCandidato;
         this.cod_voto = cod_voto;
+        this.usuarioCreo = usuarioCreo;
+        this.usuarioModifico = usuarioModifico;
+        this.fechaCreo = fechaCreo;
+        this.fechaModifico = fechaModifico;
     }
 
     public int getCod_voto_persona() {
@@ -62,6 +80,38 @@ public class VotoPersonal {
         this.cod_voto = cod_voto;
     }
 
+    public int getUsuarioCreo() {
+        return this.usuarioCreo;
+    }
+
+    public void setUsuarioCreo(int usuarioCreo) {
+        this.usuarioCreo = usuarioCreo;
+    }
+
+    public int getUsuarioModifico() {
+        return this.usuarioModifico;
+    }
+
+    public void setUsuarioModifico(int usuarioModifico) {
+        this.usuarioModifico = usuarioModifico;
+    }
+
+    public Date getFechaCreo() {
+        return this.fechaCreo;
+    }
+
+    public void setFechaCreo(Date fechaCreo) {
+        this.fechaCreo = fechaCreo;
+    }
+
+    public Date getFechaModifico() {
+        return this.fechaModifico;
+    }
+
+    public void setFechaModifico(Date fechaModifico) {
+        this.fechaModifico = fechaModifico;
+    }
+
     public VotoPersonal cod_voto_persona(int cod_voto_persona) {
         this.cod_voto_persona = cod_voto_persona;
         return this;
@@ -79,6 +129,26 @@ public class VotoPersonal {
 
     public VotoPersonal cod_voto(Voto cod_voto) {
         this.cod_voto = cod_voto;
+        return this;
+    }
+
+    public VotoPersonal usuarioCreo(int usuarioCreo) {
+        this.usuarioCreo = usuarioCreo;
+        return this;
+    }
+
+    public VotoPersonal usuarioModifico(int usuarioModifico) {
+        this.usuarioModifico = usuarioModifico;
+        return this;
+    }
+
+    public VotoPersonal fechaCreo(Date fechaCreo) {
+        this.fechaCreo = fechaCreo;
+        return this;
+    }
+
+    public VotoPersonal fechaModifico(Date fechaModifico) {
+        this.fechaModifico = fechaModifico;
         return this;
     }
 

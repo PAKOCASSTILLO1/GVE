@@ -47,6 +47,12 @@ public class Padron {
     // @Column(name = "ubicacion_geografica")
     // private Object ubicacionGeografica;
 
+    @Column(name = "usuario_creo")
+    private int usuarioCreo;
+
+    @Column(name = "usuario_modifico")
+    private int usuarioModifico;
+
     @Column(name = "fecha_creo")
     private Date fechaCreo = new Date();
 
@@ -68,30 +74,32 @@ public class Padron {
         this.zona = body.getZona();
         this.comunidad = body.getComunidad();
         this.fechaModifico = new Date();
+        this.usuarioModifico = body.getUsuarioModifico();
         return this;
     }
 
     public Padron() {
     }
 
-    // public Padron(int cod_padron, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String apellidoCasada, String cui, int dirDepartamento, int dirMunicipio, String direccion, int zona, String comunidad, Object ubicacionGeografica, Date fechaCreo, Date fechaModifico, byte estado) {
-    //     this.cod_padron = cod_padron;
-    //     this.primerNombre = primerNombre;
-    //     this.segundoNombre = segundoNombre;
-    //     this.primerApellido = primerApellido;
-    //     this.segundoApellido = segundoApellido;
-    //     this.apellidoCasada = apellidoCasada;
-    //     this.cui = cui;
-    //     this.dirDepartamento = dirDepartamento;
-    //     this.dirMunicipio = dirMunicipio;
-    //     this.direccion = direccion;
-    //     this.zona = zona;
-    //     this.comunidad = comunidad;
-    //     this.ubicacionGeografica = ubicacionGeografica;
-    //     this.fechaCreo = fechaCreo;
-    //     this.fechaModifico = fechaModifico;
-    //     this.estado = estado;
-    // }
+    public Padron(int cod_padron, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String apellidoCasada, String cui, int dirDepartamento, int dirMunicipio, String direccion, int zona, String comunidad, int usuarioCreo, int usuarioModifico, Date fechaCreo, Date fechaModifico, byte estado) {
+        this.cod_padron = cod_padron;
+        this.primerNombre = primerNombre;
+        this.segundoNombre = segundoNombre;
+        this.primerApellido = primerApellido;
+        this.segundoApellido = segundoApellido;
+        this.apellidoCasada = apellidoCasada;
+        this.cui = cui;
+        this.dirDepartamento = dirDepartamento;
+        this.dirMunicipio = dirMunicipio;
+        this.direccion = direccion;
+        this.zona = zona;
+        this.comunidad = comunidad;
+        this.usuarioCreo = usuarioCreo;
+        this.usuarioModifico = usuarioModifico;
+        this.fechaCreo = fechaCreo;
+        this.fechaModifico = fechaModifico;
+        this.estado = estado;
+    }
 
     public int getCod_padron() {
         return this.cod_padron;
@@ -189,13 +197,21 @@ public class Padron {
         this.comunidad = comunidad;
     }
 
-    // public Object getUbicacionGeografica() {
-    //     return this.ubicacionGeografica;
-    // }
+    public int getUsuarioCreo() {
+        return this.usuarioCreo;
+    }
 
-    // public void setUbicacionGeografica(Object ubicacionGeografica) {
-    //     this.ubicacionGeografica = ubicacionGeografica;
-    // }
+    public void setUsuarioCreo(int usuarioCreo) {
+        this.usuarioCreo = usuarioCreo;
+    }
+
+    public int getUsuarioModifico() {
+        return this.usuarioModifico;
+    }
+
+    public void setUsuarioModifico(int usuarioModifico) {
+        this.usuarioModifico = usuarioModifico;
+    }
 
     public Date getFechaCreo() {
         return this.fechaCreo;
@@ -281,10 +297,15 @@ public class Padron {
         return this;
     }
 
-    // public Padron ubicacionGeografica(Object ubicacionGeografica) {
-    //     this.ubicacionGeografica = ubicacionGeografica;
-    //     return this;
-    // }
+    public Padron usuarioCreo(int usuarioCreo) {
+        this.usuarioCreo = usuarioCreo;
+        return this;
+    }
+
+    public Padron usuarioModifico(int usuarioModifico) {
+        this.usuarioModifico = usuarioModifico;
+        return this;
+    }
 
     public Padron fechaCreo(Date fechaCreo) {
         this.fechaCreo = fechaCreo;

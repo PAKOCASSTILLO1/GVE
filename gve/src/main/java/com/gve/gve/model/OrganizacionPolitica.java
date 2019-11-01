@@ -27,18 +27,25 @@ public class OrganizacionPolitica {
     @Column(name = "fecha_cancelacion")
     private Date fechaCancelacion;
 
+    @Column(name = "usuario_creo")
+    private int usuarioCreo;
+
+    @Column(name = "usuario_modifico")
+    private int usuarioModifico;
+
     @Column(name = "fecha_creo")
-    private Date fechaCreo;
+    private Date fechaCreo = new Date();
 
     @Column(name = "fecha_modifico")
     private Date fechaModifico;
 
     private byte estado = 1;
 
+
     public OrganizacionPolitica() {
     }
 
-    public OrganizacionPolitica(int cod_organizacion_politica, String nombre, String descripcion, int tipoOrganizacion, TipoOrganizacion cod_tipo_organizacion, Date fechaConstitucion, Date fechaCancelacion, Date fechaCreo, Date fechaModifico, byte estado) {
+    public OrganizacionPolitica(int cod_organizacion_politica, String nombre, String descripcion, int tipoOrganizacion, TipoOrganizacion cod_tipo_organizacion, Date fechaConstitucion, Date fechaCancelacion, int usuarioCreo, int usuarioModifico, Date fechaCreo, Date fechaModifico, byte estado) {
         this.cod_organizacion_politica = cod_organizacion_politica;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -46,6 +53,8 @@ public class OrganizacionPolitica {
         this.cod_tipo_organizacion = cod_tipo_organizacion;
         this.fechaConstitucion = fechaConstitucion;
         this.fechaCancelacion = fechaCancelacion;
+        this.usuarioCreo = usuarioCreo;
+        this.usuarioModifico = usuarioModifico;
         this.fechaCreo = fechaCreo;
         this.fechaModifico = fechaModifico;
         this.estado = estado;
@@ -107,6 +116,22 @@ public class OrganizacionPolitica {
         this.fechaCancelacion = fechaCancelacion;
     }
 
+    public int getUsuarioCreo() {
+        return this.usuarioCreo;
+    }
+
+    public void setUsuarioCreo(int usuarioCreo) {
+        this.usuarioCreo = usuarioCreo;
+    }
+
+    public int getUsuarioModifico() {
+        return this.usuarioModifico;
+    }
+
+    public void setUsuarioModifico(int usuarioModifico) {
+        this.usuarioModifico = usuarioModifico;
+    }
+
     public Date getFechaCreo() {
         return this.fechaCreo;
     }
@@ -163,6 +188,16 @@ public class OrganizacionPolitica {
 
     public OrganizacionPolitica fechaCancelacion(Date fechaCancelacion) {
         this.fechaCancelacion = fechaCancelacion;
+        return this;
+    }
+
+    public OrganizacionPolitica usuarioCreo(int usuarioCreo) {
+        this.usuarioCreo = usuarioCreo;
+        return this;
+    }
+
+    public OrganizacionPolitica usuarioModifico(int usuarioModifico) {
+        this.usuarioModifico = usuarioModifico;
         return this;
     }
 
