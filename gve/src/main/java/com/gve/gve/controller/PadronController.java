@@ -64,6 +64,30 @@ public class PadronController {
         }
     }
 
+    @GetMapping("/verCui/{cui}")
+    public ResponseEntity<ApiResponse> verCui(@PathVariable String cui){
+        try {
+            List<Padron> data = new ArrayList<>();
+            if (padronRepository.findByCui(cui)!=null) {
+                data.add(padronRepository.findByCui(cui));
+                ApiResponse apiResponse = new ApiResponse("OK", "Proceso Exitoso", data);
+                return new ResponseEntity<ApiResponse>(apiResponse, HttpStatus.OK);
+            } else {
+                ApiResponse apiResponse = new ApiResponse("FAIL", "ERROR: No se ha encontrado el dato solicitado", null);
+                return new ResponseEntity<ApiResponse>(apiResponse, HttpStatus.NOT_FOUND);
+            }
+            
+        } catch (Exception e) {
+            if (e.toString().equals("java.lang.NullPointerException")) {
+                ApiResponse apiResponse = new ApiResponse("FAIL", e.toString()+" | No se ha encontrado el dato solicitado", null);
+                return new ResponseEntity<ApiResponse>(apiResponse, HttpStatus.NOT_FOUND);
+            } else {
+                ApiResponse apiResponse = new ApiResponse("FAIL", e.toString()+" | ERROR DESCONOCIDO", null);
+                return new ResponseEntity<ApiResponse>(apiResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+    }
+
     
     @PostMapping("/crear")
     public ResponseEntity<ApiResponse> ver(@RequestBody Padron padron){
@@ -115,4 +139,6 @@ public class PadronController {
             }
         }
     }
+
+
 }

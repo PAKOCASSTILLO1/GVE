@@ -23,18 +23,11 @@ public class DistritoElectoralCems {
     @JoinColumn(name = "cod_municipio", nullable = false, updatable = false)
     private Municipio cod_municipio;
 
-    @Column(name = "usuario_creo")
-    private int usuarioCreo;
-
-    @Column(name = "usuario_modifico")
-    private int usuarioModifico;
-
     @Column(name = "fecha_creo")
     private Date fechaCreo = new Date();
 
     @Column(name = "fecha_modifico")
     private Date fechaModifico;
-
     private byte estado = 1;
 
     // FOREIGN KEY
@@ -51,14 +44,14 @@ public class DistritoElectoralCems {
         this.cod_municipio = municipio;
         this.fechaModifico = new Date();
         this.cod_eleccion = eleccion;
-        this.usuarioModifico = body.usuarioModifico;
         return this;
     }
+
 
     public DistritoElectoralCems() {
     }
 
-    public DistritoElectoralCems(int cod_distrito, String nombre, int categoria, int anio, int municipio, int eleccion, Municipio cod_municipio, int usuarioCreo, int usuarioModifico, Date fechaCreo, Date fechaModifico, byte estado, Eleccion cod_eleccion) {
+    public DistritoElectoralCems(int cod_distrito, String nombre, int categoria, int anio, int municipio, int eleccion, Municipio cod_municipio, Date fechaCreo, Date fechaModifico, byte estado, Eleccion cod_eleccion) {
         this.cod_distrito = cod_distrito;
         this.nombre = nombre;
         this.categoria = categoria;
@@ -66,8 +59,6 @@ public class DistritoElectoralCems {
         this.municipio = municipio;
         this.eleccion = eleccion;
         this.cod_municipio = cod_municipio;
-        this.usuarioCreo = usuarioCreo;
-        this.usuarioModifico = usuarioModifico;
         this.fechaCreo = fechaCreo;
         this.fechaModifico = fechaModifico;
         this.estado = estado;
@@ -128,22 +119,6 @@ public class DistritoElectoralCems {
 
     public void setCod_municipio(Municipio cod_municipio) {
         this.cod_municipio = cod_municipio;
-    }
-
-    public int getUsuarioCreo() {
-        return this.usuarioCreo;
-    }
-
-    public void setUsuarioCreo(int usuarioCreo) {
-        this.usuarioCreo = usuarioCreo;
-    }
-
-    public int getUsuarioModifico() {
-        return this.usuarioModifico;
-    }
-
-    public void setUsuarioModifico(int usuarioModifico) {
-        this.usuarioModifico = usuarioModifico;
     }
 
     public Date getFechaCreo() {
@@ -213,16 +188,6 @@ public class DistritoElectoralCems {
         return this;
     }
 
-    public DistritoElectoralCems usuarioCreo(int usuarioCreo) {
-        this.usuarioCreo = usuarioCreo;
-        return this;
-    }
-
-    public DistritoElectoralCems usuarioModifico(int usuarioModifico) {
-        this.usuarioModifico = usuarioModifico;
-        return this;
-    }
-
     public DistritoElectoralCems fechaCreo(Date fechaCreo) {
         this.fechaCreo = fechaCreo;
         return this;
@@ -242,5 +207,6 @@ public class DistritoElectoralCems {
         this.cod_eleccion = cod_eleccion;
         return this;
     }
+
 
 }

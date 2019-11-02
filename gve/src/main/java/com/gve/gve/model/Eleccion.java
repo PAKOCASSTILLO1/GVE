@@ -27,12 +27,6 @@ public class Eleccion {
     @Column(name = "numero_decreto")
     private String numeroDecreto;
 
-    @Column(name = "usuario_creo")
-    private int usuarioCreo;
-
-    @Column(name = "usuario_modifico")
-    private int usuarioModifico;
-
     @Column(name = "fecha_creo")
     private Date fechaCreo = new Date();
 
@@ -49,18 +43,15 @@ public class Eleccion {
         this.fechaSegundaVuelta = body.getFechaSegundaVuelta();
         this.numeroDecreto = body.getNumeroDecreto();
         this.fechaModifico = new Date();
-        this.usuarioModifico = body.getUsuarioModifico();
         return this;
     }
 
-    public Eleccion(int cod_eleccion, Date fechaEleccion, String objetoElección, Date fechaSegundaVuelta, String numeroDecreto, int usuarioCreo, int usuarioModifico, Date fechaCreo, Date fechaModifico) {
+    public Eleccion(int cod_eleccion, Date fechaEleccion, String objetoElección, Date fechaSegundaVuelta, String numeroDecreto, Date fechaCreo, Date fechaModifico) {
         this.cod_eleccion = cod_eleccion;
         this.fechaEleccion = fechaEleccion;
         this.objetoElección = objetoElección;
         this.fechaSegundaVuelta = fechaSegundaVuelta;
         this.numeroDecreto = numeroDecreto;
-        this.usuarioCreo = usuarioCreo;
-        this.usuarioModifico = usuarioModifico;
         this.fechaCreo = fechaCreo;
         this.fechaModifico = fechaModifico;
     }
@@ -105,22 +96,6 @@ public class Eleccion {
         this.numeroDecreto = numeroDecreto;
     }
 
-    public int getUsuarioCreo() {
-        return this.usuarioCreo;
-    }
-
-    public void setUsuarioCreo(int usuarioCreo) {
-        this.usuarioCreo = usuarioCreo;
-    }
-
-    public int getUsuarioModifico() {
-        return this.usuarioModifico;
-    }
-
-    public void setUsuarioModifico(int usuarioModifico) {
-        this.usuarioModifico = usuarioModifico;
-    }
-
     public Date getFechaCreo() {
         return this.fechaCreo;
     }
@@ -159,16 +134,6 @@ public class Eleccion {
 
     public Eleccion numeroDecreto(String numeroDecreto) {
         this.numeroDecreto = numeroDecreto;
-        return this;
-    }
-
-    public Eleccion usuarioCreo(int usuarioCreo) {
-        this.usuarioCreo = usuarioCreo;
-        return this;
-    }
-
-    public Eleccion usuarioModifico(int usuarioModifico) {
-        this.usuarioModifico = usuarioModifico;
         return this;
     }
 

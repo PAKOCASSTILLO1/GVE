@@ -6,3 +6,11 @@ GET http://localhost:9002/usuario/ver/1 HTTP/1.1
 content-type: application/json
 
 ###
+
+POST http://localhost:9002/usuario/login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "FC_PAKO",
+    "password": "12345"
+}

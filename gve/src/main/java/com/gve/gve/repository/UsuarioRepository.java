@@ -8,4 +8,6 @@ import com.gve.gve.model.Usuario;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 
+    Usuario findByUsername(String username);
+
 }

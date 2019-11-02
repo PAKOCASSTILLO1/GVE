@@ -8,4 +8,6 @@ import com.gve.gve.model.Padron;
 @Repository
 public interface PadronRepository extends JpaRepository<Padron, Integer>{
 
+    Padron findByCui(String Cui);
+
 }

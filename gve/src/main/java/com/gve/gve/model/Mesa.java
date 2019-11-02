@@ -27,11 +27,6 @@ public class Mesa {
     @JoinColumn(name = "cod_centro_votacion", nullable = false, updatable = false)
     private CentroVotacion cod_centro_votacion;
     
-    @Column(name = "usuario_creo")
-    private int usuarioCreo;
-
-    @Column(name = "usuario_modifico")
-    private int usuarioModifico;
 
     @Column(name = "fecha_creo")
     private Date fechaCreo = new Date();
@@ -39,27 +34,24 @@ public class Mesa {
     @Column(name = "fecha_modifico")
     private Date fechaModifico;
 
-    private byte estado =1;
+    private byte estado;
 
     public Mesa modified(Mesa body, CentroVotacion centroVotacion) {
         this.centroVotacion = centroVotacion.getCod_centro_votacion();
         this.numero = body.getNumero();
         this.cod_centro_votacion = centroVotacion;
         this.fechaModifico = new Date();
-        this.usuarioModifico = body.getUsuarioModifico();
         return this;
     }
 
     public Mesa() {
     }
 
-    public Mesa(int cod_mesa, int numero, int centroVotacion, CentroVotacion cod_centro_votacion, int usuarioCreo, int usuarioModifico, Date fechaCreo, Date fechaModifico, byte estado) {
+    public Mesa(int cod_mesa, int numero, int centroVotacion, CentroVotacion cod_centro_votacion, Date fechaCreo, Date fechaModifico, byte estado) {
         this.cod_mesa = cod_mesa;
         this.numero = numero;
         this.centroVotacion = centroVotacion;
         this.cod_centro_votacion = cod_centro_votacion;
-        this.usuarioCreo = usuarioCreo;
-        this.usuarioModifico = usuarioModifico;
         this.fechaCreo = fechaCreo;
         this.fechaModifico = fechaModifico;
         this.estado = estado;
@@ -95,22 +87,6 @@ public class Mesa {
 
     public void setCod_centro_votacion(CentroVotacion cod_centro_votacion) {
         this.cod_centro_votacion = cod_centro_votacion;
-    }
-
-    public int getUsuarioCreo() {
-        return this.usuarioCreo;
-    }
-
-    public void setUsuarioCreo(int usuarioCreo) {
-        this.usuarioCreo = usuarioCreo;
-    }
-
-    public int getUsuarioModifico() {
-        return this.usuarioModifico;
-    }
-
-    public void setUsuarioModifico(int usuarioModifico) {
-        this.usuarioModifico = usuarioModifico;
     }
 
     public Date getFechaCreo() {
@@ -154,16 +130,6 @@ public class Mesa {
 
     public Mesa cod_centro_votacion(CentroVotacion cod_centro_votacion) {
         this.cod_centro_votacion = cod_centro_votacion;
-        return this;
-    }
-
-    public Mesa usuarioCreo(int usuarioCreo) {
-        this.usuarioCreo = usuarioCreo;
-        return this;
-    }
-
-    public Mesa usuarioModifico(int usuarioModifico) {
-        this.usuarioModifico = usuarioModifico;
         return this;
     }
 

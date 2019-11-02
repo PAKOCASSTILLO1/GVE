@@ -6,12 +6,12 @@ POST http://localhost:9002/padron/crear HTTP/1.1
 content-type: application/json
 
     {
-      "primerNombre": "PADRON PRUEBA",
+      "primerNombre": "PADRON PRUEBA 2",
       "segundoNombre": "ESTUARDO",
       "primerApellido": "GONZALES",
       "segundoApellido": "PEREZ",
       "apellidoCasada": null,
-      "cui": "0000000000000000",
+      "cui": "0000000000000001",
       "dirDepartamento": 1,
       "dirMunicipio": 1,
       "direccion": "3ERA VENIDA 5-33 ZONA 1",
@@ -22,6 +22,11 @@ content-type: application/json
 ###
 
 GET http://localhost:9002/padron/ver/1 HTTP/1.1
+content-type: application/json
+
+###
+
+GET http://localhost:9002/padron/verCui/2278876650101 HTTP/1.1
 content-type: application/json
 
 ###

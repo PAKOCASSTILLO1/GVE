@@ -4,8 +4,8 @@ package com.gve.gve.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.gve.gve.model.TipoVotacion;
 import com.gve.gve.model.Mesa;
+import com.gve.gve.model.TipoVotacion;
 import com.gve.gve.model.Voto;
 import com.gve.gve.repository.MesaRepository;
 import com.gve.gve.repository.TipoVotacionRepository;
@@ -31,7 +31,6 @@ public class VotoController {
 
     @Autowired
     VotoRepository votoRepository;
-
     @Autowired
     TipoVotacionRepository tipoVotacionRepository;
 
@@ -102,10 +101,10 @@ public class VotoController {
     //     List<Voto> data = new ArrayList<>();
     //     try {
     //         Voto voto = votoRepository.findById(id).orElse(null);
-    //         Mesa mesa = mesaRepository.findById(body.getMesa()).orElse(null);
-    //         TipoVotacion tipoVotacion = tipoVotacionRepository.findById(body.getTipoVotacion()).orElse(null);
-    //         votoRepository.save(voto.modified(body, mesa, tipoVotacion));
-    //         voto.setCod_mesa(null);
+    //         Padron padron = padronRepository.findById(body.getPadron()).orElse(null);
+    //         OrganizacionPolitica organizacionPolitica = organizacionPoliticaRepository.findById(body.getOrganizacionPolitica()).orElse(null);
+    //         votoRepository.save(voto.modified(body, padron, organizacionPolitica));
+    //         voto.setCod_padron(null);
     //         voto.setCod_organizacion_politica(null);
     //         data.add(voto);
     //         ApiResponse apiResponse = new ApiResponse("OK", "Proceso Exitoso", data);

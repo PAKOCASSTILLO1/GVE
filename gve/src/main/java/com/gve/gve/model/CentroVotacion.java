@@ -26,12 +26,6 @@ public class CentroVotacion {
     @JoinColumn(name = "cod_distrito", nullable = false, updatable = false)
     private DistritoElectoralCems cod_distrito;
 
-    @Column(name = "usuario_creo")
-    private int usuarioCreo;
-
-    @Column(name = "usuario_modifico")
-    private int usuarioModifico;
-
     @Column(name = "fecha_creo")
     private Date fechaCreo = new Date();
 
@@ -47,7 +41,6 @@ public class CentroVotacion {
         this.distrito = distrito.getCod_distrito();
         this.cod_distrito = distrito;
         this.fechaModifico = new Date();
-        this.usuarioModifico = body.getUsuarioModifico();
         return this;
     }
 
@@ -55,15 +48,13 @@ public class CentroVotacion {
     public CentroVotacion() {
     }
 
-    public CentroVotacion(int cod_centro_votacion, String nombre, String direccion, String telefono, int distrito, DistritoElectoralCems cod_distrito, int usuarioCreo, int usuarioModifico, Date fechaCreo, Date fechaModifico, byte estado) {
+    public CentroVotacion(int cod_centro_votacion, String nombre, String direccion, String telefono, int distrito, DistritoElectoralCems cod_distrito, Date fechaCreo, Date fechaModifico, byte estado) {
         this.cod_centro_votacion = cod_centro_votacion;
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
         this.distrito = distrito;
         this.cod_distrito = cod_distrito;
-        this.usuarioCreo = usuarioCreo;
-        this.usuarioModifico = usuarioModifico;
         this.fechaCreo = fechaCreo;
         this.fechaModifico = fechaModifico;
         this.estado = estado;
@@ -115,22 +106,6 @@ public class CentroVotacion {
 
     public void setCod_distrito(DistritoElectoralCems cod_distrito) {
         this.cod_distrito = cod_distrito;
-    }
-
-    public int getUsuarioCreo() {
-        return this.usuarioCreo;
-    }
-
-    public void setUsuarioCreo(int usuarioCreo) {
-        this.usuarioCreo = usuarioCreo;
-    }
-
-    public int getUsuarioModifico() {
-        return this.usuarioModifico;
-    }
-
-    public void setUsuarioModifico(int usuarioModifico) {
-        this.usuarioModifico = usuarioModifico;
     }
 
     public Date getFechaCreo() {
@@ -187,16 +162,6 @@ public class CentroVotacion {
         return this;
     }
 
-    public CentroVotacion usuarioCreo(int usuarioCreo) {
-        this.usuarioCreo = usuarioCreo;
-        return this;
-    }
-
-    public CentroVotacion usuarioModifico(int usuarioModifico) {
-        this.usuarioModifico = usuarioModifico;
-        return this;
-    }
-
     public CentroVotacion fechaCreo(Date fechaCreo) {
         this.fechaCreo = fechaCreo;
         return this;
@@ -211,5 +176,6 @@ public class CentroVotacion {
         this.estado = estado;
         return this;
     }
+
 
 }

@@ -29,14 +29,8 @@ public class Candidato {
     @JoinColumn(name = "cod_organizacion_politica", nullable = false, updatable = false)
     private OrganizacionPolitica cod_organizacion_politica;
 
-    @Column(name = "usuario_creo")
-    private int usuarioCreo;
-
-    @Column(name = "usuario_modifico")
-    private int usuarioModifico;
-
     @Column(name = "fecha_creo")
-    private Date fechaCreo = new Date();
+    private Date fechaCreo;
 
     @Column(name = "fecha_modifico")
     private Date fechaModifico;
@@ -53,10 +47,11 @@ public class Candidato {
     @JoinColumn(name = "cod_tipo_cargo", nullable = false, updatable = false)
     private TipoCargo cod_tipo_cargo;
 
+
     public Candidato() {
     }
 
-    public Candidato(int cod_candidato, int tipoVotacion, int organizacionPolitica, int afiliado, int tipoCargo, TipoVotacion cod_tipo_votacion, OrganizacionPolitica cod_organizacion_politica, int usuarioCreo, int usuarioModifico, Date fechaCreo, Date fechaModifico, byte estado, Afiliado cod_afiliado, TipoCargo cod_tipo_cargo) {
+    public Candidato(int cod_candidato, int tipoVotacion, int organizacionPolitica, int afiliado, int tipoCargo, TipoVotacion cod_tipo_votacion, OrganizacionPolitica cod_organizacion_politica, Date fechaCreo, Date fechaModifico, byte estado, Afiliado cod_afiliado, TipoCargo cod_tipo_cargo) {
         this.cod_candidato = cod_candidato;
         this.tipoVotacion = tipoVotacion;
         this.organizacionPolitica = organizacionPolitica;
@@ -64,8 +59,6 @@ public class Candidato {
         this.tipoCargo = tipoCargo;
         this.cod_tipo_votacion = cod_tipo_votacion;
         this.cod_organizacion_politica = cod_organizacion_politica;
-        this.usuarioCreo = usuarioCreo;
-        this.usuarioModifico = usuarioModifico;
         this.fechaCreo = fechaCreo;
         this.fechaModifico = fechaModifico;
         this.estado = estado;
@@ -127,22 +120,6 @@ public class Candidato {
 
     public void setCod_organizacion_politica(OrganizacionPolitica cod_organizacion_politica) {
         this.cod_organizacion_politica = cod_organizacion_politica;
-    }
-
-    public int getUsuarioCreo() {
-        return this.usuarioCreo;
-    }
-
-    public void setUsuarioCreo(int usuarioCreo) {
-        this.usuarioCreo = usuarioCreo;
-    }
-
-    public int getUsuarioModifico() {
-        return this.usuarioModifico;
-    }
-
-    public void setUsuarioModifico(int usuarioModifico) {
-        this.usuarioModifico = usuarioModifico;
     }
 
     public Date getFechaCreo() {
@@ -217,16 +194,6 @@ public class Candidato {
 
     public Candidato cod_organizacion_politica(OrganizacionPolitica cod_organizacion_politica) {
         this.cod_organizacion_politica = cod_organizacion_politica;
-        return this;
-    }
-
-    public Candidato usuarioCreo(int usuarioCreo) {
-        this.usuarioCreo = usuarioCreo;
-        return this;
-    }
-
-    public Candidato usuarioModifico(int usuarioModifico) {
-        this.usuarioModifico = usuarioModifico;
         return this;
     }
 

@@ -105,10 +105,10 @@ public class VotoOrgController {
     //     List<VotoOrganizacion> data = new ArrayList<>();
     //     try {
     //         VotoOrganizacion votoOrganizacion = votoOrganizacionRepository.findById(id).orElse(null);
-    //         Voto voto = votoRepository.findById(body.getVoto()).orElse(null);
+    //         Padron padron = padronRepository.findById(body.getPadron()).orElse(null);
     //         OrganizacionPolitica organizacionPolitica = organizacionPoliticaRepository.findById(body.getOrganizacionPolitica()).orElse(null);
-    //         votoOrganizacionRepository.save(votoOrganizacion.modified(body, voto, organizacionPolitica));
-    //         votoOrganizacion.setCod_voto(null);
+    //         votoOrganizacionRepository.save(votoOrganizacion.modified(body, padron, organizacionPolitica));
+    //         votoOrganizacion.setCod_padron(null);
     //         votoOrganizacion.setCod_organizacion_politica(null);
     //         data.add(votoOrganizacion);
     //         ApiResponse apiResponse = new ApiResponse("OK", "Proceso Exitoso", data);

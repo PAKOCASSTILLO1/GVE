@@ -30,24 +30,19 @@ public class FiscalOrganizacion {
     @JoinColumn(name = "cod_afiliado", nullable = false, updatable = false)
     private Afiliado cod_afiliado;
 
-    @Column(name = "usuario_creo")
-    private int usuarioCreo;
-
-    @Column(name = "usuario_modifico")
-    private int usuarioModifico;
-
     @Column(name = "fecha_creo")
-    private Date fechaCreo = new Date();
+    private Date fechaCreo;
 
     @Column(name = "fecha_modifico")
     private Date fechaModifico;
 
     private byte estado =1;
 
+
     public FiscalOrganizacion() {
     }
 
-    public FiscalOrganizacion(int cod_fiscal, int organizacionPolitica, int tipoFiscal, int afiliado, OrganizacionPolitica cod_organizacion_politica, TipoFiscal cod_tipo_fiscal, Afiliado cod_afiliado, int usuarioCreo, int usuarioModifico, Date fechaCreo, Date fechaModifico, byte estado) {
+    public FiscalOrganizacion(int cod_fiscal, int organizacionPolitica, int tipoFiscal, int afiliado, OrganizacionPolitica cod_organizacion_politica, TipoFiscal cod_tipo_fiscal, Afiliado cod_afiliado, Date fechaCreo, Date fechaModifico, byte estado) {
         this.cod_fiscal = cod_fiscal;
         this.organizacionPolitica = organizacionPolitica;
         this.tipoFiscal = tipoFiscal;
@@ -55,8 +50,6 @@ public class FiscalOrganizacion {
         this.cod_organizacion_politica = cod_organizacion_politica;
         this.cod_tipo_fiscal = cod_tipo_fiscal;
         this.cod_afiliado = cod_afiliado;
-        this.usuarioCreo = usuarioCreo;
-        this.usuarioModifico = usuarioModifico;
         this.fechaCreo = fechaCreo;
         this.fechaModifico = fechaModifico;
         this.estado = estado;
@@ -118,22 +111,6 @@ public class FiscalOrganizacion {
         this.cod_afiliado = cod_afiliado;
     }
 
-    public int getUsuarioCreo() {
-        return this.usuarioCreo;
-    }
-
-    public void setUsuarioCreo(int usuarioCreo) {
-        this.usuarioCreo = usuarioCreo;
-    }
-
-    public int getUsuarioModifico() {
-        return this.usuarioModifico;
-    }
-
-    public void setUsuarioModifico(int usuarioModifico) {
-        this.usuarioModifico = usuarioModifico;
-    }
-
     public Date getFechaCreo() {
         return this.fechaCreo;
     }
@@ -190,16 +167,6 @@ public class FiscalOrganizacion {
 
     public FiscalOrganizacion cod_afiliado(Afiliado cod_afiliado) {
         this.cod_afiliado = cod_afiliado;
-        return this;
-    }
-
-    public FiscalOrganizacion usuarioCreo(int usuarioCreo) {
-        this.usuarioCreo = usuarioCreo;
-        return this;
-    }
-
-    public FiscalOrganizacion usuarioModifico(int usuarioModifico) {
-        this.usuarioModifico = usuarioModifico;
         return this;
     }
 

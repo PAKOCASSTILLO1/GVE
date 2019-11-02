@@ -30,14 +30,8 @@ public class ComiteEjecutivoNacional {
     @JoinColumn(name = "cod_afiliado", nullable = false, updatable = false)
     private Afiliado cod_afiliado;
 
-    @Column(name = "usuario_creo")
-    private int usuarioCreo;
-
-    @Column(name = "usuario_modifico")
-    private int usuarioModifico;
-
     @Column(name = "fecha_creo")
-    private Date fechaCreo = new Date();
+    private Date fechaCreo;
 
     @Column(name = "fecha_modifico")
     private Date fechaModifico;
@@ -48,7 +42,7 @@ public class ComiteEjecutivoNacional {
     public ComiteEjecutivoNacional() {
     }
 
-    public ComiteEjecutivoNacional(int cod_comite_ejecutivo, int organizacionPolitica, int tipoCargo, int afiliado, OrganizacionPolitica cod_organizacion_politica, TipoCargo cod_tipo_cargo, Afiliado cod_afiliado, int usuarioCreo, int usuarioModifico, Date fechaCreo, Date fechaModifico, byte estado) {
+    public ComiteEjecutivoNacional(int cod_comite_ejecutivo, int organizacionPolitica, int tipoCargo, int afiliado, OrganizacionPolitica cod_organizacion_politica, TipoCargo cod_tipo_cargo, Afiliado cod_afiliado, Date fechaCreo, Date fechaModifico, byte estado) {
         this.cod_comite_ejecutivo = cod_comite_ejecutivo;
         this.organizacionPolitica = organizacionPolitica;
         this.tipoCargo = tipoCargo;
@@ -56,8 +50,6 @@ public class ComiteEjecutivoNacional {
         this.cod_organizacion_politica = cod_organizacion_politica;
         this.cod_tipo_cargo = cod_tipo_cargo;
         this.cod_afiliado = cod_afiliado;
-        this.usuarioCreo = usuarioCreo;
-        this.usuarioModifico = usuarioModifico;
         this.fechaCreo = fechaCreo;
         this.fechaModifico = fechaModifico;
         this.estado = estado;
@@ -119,22 +111,6 @@ public class ComiteEjecutivoNacional {
         this.cod_afiliado = cod_afiliado;
     }
 
-    public int getUsuarioCreo() {
-        return this.usuarioCreo;
-    }
-
-    public void setUsuarioCreo(int usuarioCreo) {
-        this.usuarioCreo = usuarioCreo;
-    }
-
-    public int getUsuarioModifico() {
-        return this.usuarioModifico;
-    }
-
-    public void setUsuarioModifico(int usuarioModifico) {
-        this.usuarioModifico = usuarioModifico;
-    }
-
     public Date getFechaCreo() {
         return this.fechaCreo;
     }
@@ -191,16 +167,6 @@ public class ComiteEjecutivoNacional {
 
     public ComiteEjecutivoNacional cod_afiliado(Afiliado cod_afiliado) {
         this.cod_afiliado = cod_afiliado;
-        return this;
-    }
-
-    public ComiteEjecutivoNacional usuarioCreo(int usuarioCreo) {
-        this.usuarioCreo = usuarioCreo;
-        return this;
-    }
-
-    public ComiteEjecutivoNacional usuarioModifico(int usuarioModifico) {
-        this.usuarioModifico = usuarioModifico;
         return this;
     }
 
