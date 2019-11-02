@@ -29,7 +29,7 @@ public class CentroVotacion {
     @Column(name = "usuario_creo")
     private int usuarioCreo;
 
-    @Column(name = "usuario_midifico")
+    @Column(name = "usuario_modifico")
     private int usuarioModifico;
 
     @Column(name = "fecha_creo")
