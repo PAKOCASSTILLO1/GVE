@@ -1,0 +1,12 @@
+GET http://localhost:9002/votoOrg/listar HTTP/1.1
+
+###
+
+GET http://localhost:9002/votoOrg/listarVotosOrg/2 HTTP/1.1
+
+###
+
+GET http://localhost:9002/votoOrg/ver/1 HTTP/1.1
+content-type: application/json
+
+###

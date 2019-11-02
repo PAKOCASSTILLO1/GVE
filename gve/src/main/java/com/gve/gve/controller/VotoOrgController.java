@@ -79,6 +79,27 @@ public class VotoOrgController {
         }
     }
 
+    @GetMapping("/listarVotosOrg/{id}")
+    public ResponseEntity<ApiResponse> listarVotos(@PathVariable int id){
+        try {
+            List<VotoOrganizacion> votoOrganizacions =  votoOrganizacionRepository.findByOrganizacionPolitica(id);
+            List<VotoOrganizacion> data = new ArrayList<>();
+            for (VotoOrganizacion votoOrganizacion : votoOrganizacions) {
+                Voto voto = votoOrganizacion.getCod_voto();
+                voto.setCod_mesa(null);
+                voto.setCod_tipo_votacion(null);
+                votoOrganizacion.setCod_voto(null);
+                votoOrganizacion.setCod_organizacion_politica(null);
+                data.add(votoOrganizacion);
+            }
+            ApiResponse apiResponse = new ApiResponse("OK", "Proceso Exitoso", data);
+            return new ResponseEntity<ApiResponse>(apiResponse, HttpStatus.OK);
+        } catch (Exception e) {
+            ApiResponse apiResponse = new ApiResponse("FAIL", e.toString(), null);
+            return new ResponseEntity<ApiResponse>(apiResponse, HttpStatus.BAD_REQUEST);            
+        }
+    }
+
     @GetMapping("/ver/{id}")
     public ResponseEntity<ApiResponse> ver(@PathVariable int id){
         List<VotoOrganizacion> data = new ArrayList<>();
